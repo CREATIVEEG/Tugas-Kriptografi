@@ -23,9 +23,9 @@ Jadikan pasangan: GO OD BR OM SW EE PC LE AN
 <br>
 Aturan Enkripsi:
 <br>
-• Jika pasangan huruf berada dalam baris yang sama, gantikan dengan huruf di kirinya (dengan wrap-around).
-• Jika pasangan huruf berada dalam baris yang sama, gantikan dengan huruf di kanannya (dengan wrap-around).
-• Jika tidak dalam baris/kolom yang sama, buat persegi panjang dan gantikan dengan huruf di sudut yang sama baris.
+• Jika pasangan huruf berada dalam baris yang sama, gantikan dengan huruf di kirinya (dengan wrap-around).<br>
+• Jika pasangan huruf berada dalam baris yang sama, gantikan dengan huruf di kanannya (dengan wrap-around).<br>
+• Jika tidak dalam baris/kolom yang sama, buat persegi panjang dan gantikan dengan huruf di sudut yang sama baris.<br>
 <br>
 Contoh: "GO" -> G di (3,4) dan O di (2,2) jadi "CD".
 <br><br>
@@ -89,12 +89,39 @@ def encrypt_pairs(pairs, matrix):
 
     return "".join(ciphertext)
 
+# Fungsi untuk dekripsi pasangan huruf
+def decrypt_pairs(pairs, matrix):
+    def find_position(c):
+        for i in range(5):
+            for j in range(5):
+                if matrix[i][j] == c:
+                    return i, j
+        return -1, -1
+
+    plaintext = []
+    for pair in pairs:
+        a, b = pair
+        row_a, col_a = find_position(a)
+        row_b, col_b = find_position(b)
+
+        if row_a == row_b:
+            plaintext.append(matrix[row_a][(col_a - 1) % 5] + matrix[row_b][(col_b - 1) % 5])
+        elif col_a == col_b:
+            plaintext.append(matrix[(row_a - 1) % 5][col_a] + matrix[(row_b - 1) % 5][col_b])
+        else:
+            plaintext.append(matrix[row_a][col_b] + matrix[row_b][col_a])
+
+    return "".join(plaintext)
+
 # Fungsi utama
-def playfair_cipher(text, key):
+def playfair_cipher(text, key, decrypt=False):
     matrix = generate_key_matrix(key)
     pairs = separate_pairs(text)
-    ciphertext = encrypt_pairs(pairs, matrix)
-    return ciphertext
+    if decrypt:
+        result = decrypt_pairs(pairs, matrix)
+    else:
+        result = encrypt_pairs(pairs, matrix)
+    return result
 
 # Contoh penggunaan
 key = "TEKNIKINFORMATIKA"
@@ -106,10 +133,14 @@ plaintexts = [
 
 for plaintext in plaintexts:
     encrypted_text = playfair_cipher(plaintext, key)
-    print(f"Plaintext: {plaintext}\nCiphertext: {encrypted_text}\n")
+    decrypted_text = playfair_cipher(encrypted_text, key, decrypt=True)
+    print(f"Plaintext: {plaintext}")
+    print(f"Ciphertext: {encrypted_text}")
+    print(f"Decrypted text: {decrypted_text}\n")
 ```
 <br>
 Hasil Run:<br>
-
-![Cuplikan layar 2024-10-15 085931](https://github.com/user-attachments/assets/faea23f8-a8c5-4cb2-9d9b-529966cb7fe7)
-
+![Cuplikan layar 2024-10-15 090658](https://github.com/user-attachments/assets/0327e856-a5e2-4ad5-ab26-506cfc65ba2f)
+<br>
+# Penjelasan
+Hasil Dekripsi tersebut tinggal menghapus huruf X yang terdapat pada kalimat, maka jadi kalimat asli.
