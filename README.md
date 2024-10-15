@@ -15,19 +15,16 @@ B C D G H
 L P Q S U
 V W X Y Z
 ```
-Pisahkan Teks:
-<br>
-Contoh: "GOOD BROOM SWEEP CLEAN"
-<br>
-Jadikan pasangan: GO OD BR OM SW EE PC LE AN
-<br>
 Aturan Enkripsi:
 <br>
 • Jika pasangan huruf berada dalam baris yang sama, gantikan dengan huruf di kirinya (dengan wrap-around).<br>
 • Jika pasangan huruf berada dalam baris yang sama, gantikan dengan huruf di kanannya (dengan wrap-around).<br>
 • Jika tidak dalam baris/kolom yang sama, buat persegi panjang dan gantikan dengan huruf di sudut yang sama baris.<br>
-<br>
-Contoh: "GO" -> G di (3,4) dan O di (2,2) jadi "CD".
+
+Hasilnya:
+GOOD BROOM SWEEP CLEAN
+
+
 <br><br>
 Langkah-langkah Dekripsi
 Kebalikan proses enkripsi:
@@ -147,4 +144,4 @@ Hasil Run:<br>
 <br>
 
 ## Penjelasan
-Hasil Dekripsi tersebut tinggal menghapus huruf X yang terdapat pada kalimat, maka jadi kalimat asli.
+Hasil Dekripsi tersebut tinggal menghapus huruf X yang terdapat pada kalimat, maka jadi kalimat asli. Dan juga ganti huruf I menjadi Huruf J jika memungkinkan untuk diganti.
