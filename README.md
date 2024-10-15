@@ -145,5 +145,6 @@ Hasil Run:<br>
 ![Cuplikan layar 2024-10-15 090658](https://github.com/user-attachments/assets/42e0611c-91db-41c5-980b-c1d68a32db44)
 
 <br>
+
 ## Penjelasan
 Hasil Dekripsi tersebut tinggal menghapus huruf X yang terdapat pada kalimat, maka jadi kalimat asli.
