@@ -21,10 +21,6 @@ Aturan Enkripsi:
 • Jika pasangan huruf berada dalam baris yang sama, gantikan dengan huruf di kanannya (dengan wrap-around).<br>
 • Jika tidak dalam baris/kolom yang sama, buat persegi panjang dan gantikan dengan huruf di sudut yang sama baris.<br>
 
-Hasilnya:
-GOOD BROOM SWEEP CLEAN
-
-
 <br><br>
 Langkah-langkah Dekripsi
 Kebalikan proses enkripsi:
