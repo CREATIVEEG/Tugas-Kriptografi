@@ -1,7 +1,7 @@
 # Tugas-Kriptografi
-<b>Nama: Rhendy Diki Nugraha<b><br>
-<b>Nim: 312210150<b><br>
-<b>Kelas: TI.22.A1<b><br><br>
+Nama: Rhendy Diki Nugraha<br>
+Nim: 312210150<br>
+Kelas: TI.22.A1<br><br>
 Langkah-langkah Enkripsi <br>
 Buat Matriks Kunci:
 <br>
@@ -31,10 +31,10 @@ Contoh: "GO" -> G di (3,4) dan O di (2,2) jadi "CD".
 <br><br>
 Langkah-langkah Dekripsi
 Kebalikan proses enkripsi:
-• Jika pasangan huruf berada dalam baris yang sama, gantikan dengan huruf di kirinya (dengan wrap-around).
-• Jika pasangan huruf berada dalam kolom yang sama, gantikan dengan huruf di atasnya (dengan wrap-around).
-• Jika tidak dalam baris/kolom yang sama, buat persegi panjang dan gantikan dengan huruf di sudut yang sama baris.
-
+• Jika pasangan huruf berada dalam baris yang sama, gantikan dengan huruf di kirinya (dengan wrap-around).<br>
+• Jika pasangan huruf berada dalam kolom yang sama, gantikan dengan huruf di atasnya (dengan wrap-around). <br>
+• Jika tidak dalam baris/kolom yang sama, buat persegi panjang dan gantikan dengan huruf di sudut yang sama baris. <br>
+<br>
 Berikut dikerjakan dalam code Python:
 ```
 # Fungsi untuk membuat matriks kunci
@@ -144,6 +144,6 @@ Hasil Run:<br>
 
 ![Cuplikan layar 2024-10-15 090658](https://github.com/user-attachments/assets/42e0611c-91db-41c5-980b-c1d68a32db44)
 
-<br><br>
-# Penjelasan
+<br>
+## Penjelasan
 Hasil Dekripsi tersebut tinggal menghapus huruf X yang terdapat pada kalimat, maka jadi kalimat asli.
