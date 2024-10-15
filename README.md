@@ -110,5 +110,6 @@ for plaintext in plaintexts:
 ```
 <br>
 Hasil Run:<br>
-![image](https://github.com/user-attachments/assets/80a5b5bd-445b-4d68-badf-3ba0c41f9423)
+
+![Cuplikan layar 2024-10-15 085931](https://github.com/user-attachments/assets/faea23f8-a8c5-4cb2-9d9b-529966cb7fe7)
 
