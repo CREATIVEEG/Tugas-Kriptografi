@@ -7,11 +7,11 @@ Kunci: "TEKNIK INFORMATIKA" -> Hilangkan huruf berulang.
 Matriks:
 
 Copy
-```T E K N I
+``` T E K N I
 F O R M A
 B C D G H
 L P Q S U
-V W X Y Z```
+V W X Y Z ```
 Pisahkan Teks:
 
 Contoh: "GOOD BROOM SWEEP CLEAN"
