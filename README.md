@@ -110,4 +110,5 @@ for plaintext in plaintexts:
 ```
 <br>
 Hasil Run:<br>
-![image](https://github.com/user-attachments/assets/38f0b29b-032a-4368-9dfc-30b4dbadb11f)
+![image](https://github.com/user-attachments/assets/80a5b5bd-445b-4d68-badf-3ba0c41f9423)
+
