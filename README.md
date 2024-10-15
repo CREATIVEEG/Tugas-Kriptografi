@@ -1,4 +1,7 @@
 # Tugas-Kriptografi
+<b>Nama: Rhendy Diki Nugraha<b><br>
+<b>Nim: 312210150<b><br>
+<b>Kelas: TI.22.A1<b><br><br>
 Langkah-langkah Enkripsi <br>
 Buat Matriks Kunci:
 <br>
@@ -25,35 +28,86 @@ Aturan Enkripsi:
 • Jika tidak dalam baris/kolom yang sama, buat persegi panjang dan gantikan dengan huruf di sudut yang sama baris.
 <br>
 Contoh: "GO" -> G di (3,4) dan O di (2,2) jadi "CD".
-<br>
+<br><br>
 Langkah-langkah Dekripsi
 Kebalikan proses enkripsi:
 • Jika pasangan huruf berada dalam baris yang sama, gantikan dengan huruf di kirinya (dengan wrap-around).
 • Jika pasangan huruf berada dalam kolom yang sama, gantikan dengan huruf di atasnya (dengan wrap-around).
 • Jika tidak dalam baris/kolom yang sama, buat persegi panjang dan gantikan dengan huruf di sudut yang sama baris.
 
-Enkripsi <br>
-1. GOOD BROOM SWEEP CLEAN <br>
-Pasangan huruf: GO OD BR OM SW EE PC LE AN <br>
-Enkripsi: RN NS OG NP CX ZI KD NA KO <br>
+Berikut dikerjakan dalam code Python:
+```
+# Fungsi untuk membuat matriks kunci
+def generate_key_matrix(key):
+    key = "".join(sorted(set(key), key=key.index))
+    alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ"
+    key += "".join([c for c in alphabet if c not in key])
+    matrix = [list(key[i:i + 5]) for i in range(0, 25, 5)]
+    return matrix
+
+# Fungsi untuk memisahkan plaintext
+def separate_pairs(plaintext):
+    plaintext = plaintext.replace(" ", "").upper().replace("J", "I")
+    pairs = []
+    i = 0
+    while i < len(plaintext):
+        a = plaintext[i]
+        if i + 1 < len(plaintext):
+            b = plaintext[i + 1]
+            if a != b:
+                pairs.append(a + b)
+                i += 2
+            else:
+                pairs.append(a + "X")
+                i += 1
+        else:
+            pairs.append(a + "X")
+            i += 1
+    return pairs
+
+# Fungsi untuk enkripsi pasangan huruf
+def encrypt_pairs(pairs, matrix):
+    def find_position(c):
+        for i in range(5):
+            for j in range(5):
+                if matrix[i][j] == c:
+                    return i, j
+        return -1, -1
+
+    ciphertext = []
+    for pair in pairs:
+        a, b = pair
+        row_a, col_a = find_position(a)
+        row_b, col_b = find_position(b)
+
+        if row_a == row_b:
+            ciphertext.append(matrix[row_a][(col_a + 1) % 5] + matrix[row_b][(col_b + 1) % 5])
+        elif col_a == col_b:
+            ciphertext.append(matrix[(row_a + 1) % 5][col_a] + matrix[(row_b + 1) % 5][col_b])
+        else:
+            ciphertext.append(matrix[row_a][col_b] + matrix[row_b][col_a])
+
+    return "".join(ciphertext)
+
+# Fungsi utama
+def playfair_cipher(text, key):
+    matrix = generate_key_matrix(key)
+    pairs = separate_pairs(text)
+    ciphertext = encrypt_pairs(pairs, matrix)
+    return ciphertext
+
+# Contoh penggunaan
+key = "TEKNIKINFORMATIKA"
+plaintexts = [
+    "GOOD BROOM SWEEP CLEAN",
+    "REDWOOD NATIONAL STATE PARK",
+    "JUNK FOOD AND HEALTH PROBLEMS"
+]
+
+for plaintext in plaintexts:
+    encrypted_text = playfair_cipher(plaintext, key)
+    print(f"Plaintext: {plaintext}\nCiphertext: {encrypted_text}\n")
+```
 <br>
-2. REDWOOD NATIONAL STATE PARK <br>
-Pasangan huruf: RE DW OO DN AT IO NA LS TA TE PA RK <br>
-Enkripsi: SK GO PX GO FN MO LK IE FN UN NM XA KL <br>
-<br>
-3.JUNK FOOD AND HEALTH PROBLEMS <br>
-Pasangan huruf: JU NK FO OD AN DH EA LT HP RO BL EM S <br>
-Enkripsi: KT LO NR NN FN ID HM ND HP ZJ NF CM Q <br>
-<br> 
-Dekripsi <br> 
-1. GOOD BROOM SWEEP CLEAN <br>
-Enkripsi: RN NS OG NP CX ZI KD NA KO <br>
-Dekripsi: GO OD BR OM SW EE PC LE AN <br>
-<br>
-2. REDWOOD NATIONAL STATE PARK <br>
-Enkripsi: SK GO PX GO FN MO LK IE FN UN NM XA KL <br>
-Dekripsi: RE DW OO DN AT IO NA LS TA TE PA RK <br>
-<br>
-3. JUNK FOOD AND HEALTH PROBLEMS <br>
-Enkripsi: KT LO NR NN FN ID HM ND HP ZJ NF CM Q <br>
-Dekripsi: JU NK FO OD AN DH EA LT HP RO BL EM S <br>
+Hasil Run:<br>
+![image](https://github.com/user-attachments/assets/38f0b29b-032a-4368-9dfc-30b4dbadb11f)
