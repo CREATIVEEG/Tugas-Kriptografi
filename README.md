@@ -22,8 +22,8 @@ Aturan Enkripsi:
 • Jika tidak dalam baris/kolom yang sama, buat persegi panjang dan gantikan dengan huruf di sudut yang sama baris.<br>
 
 <br><br>
-Langkah-langkah Dekripsi
-Kebalikan proses enkripsi:
+Langkah-langkah Dekripsi<br>
+Kebalikan proses enkripsi:<br>
 • Jika pasangan huruf berada dalam baris yang sama, gantikan dengan huruf di kirinya (dengan wrap-around).<br>
 • Jika pasangan huruf berada dalam kolom yang sama, gantikan dengan huruf di atasnya (dengan wrap-around). <br>
 • Jika tidak dalam baris/kolom yang sama, buat persegi panjang dan gantikan dengan huruf di sudut yang sama baris. <br>
